@@ -4,22 +4,25 @@ CREATE TABLE usuarios(
 
 
 );*/
-CREATE DATABASE `sis_chamados`
+/*CREATE DATABASE sis_chamados;*/
 
 DROP TABLE IF EXISTS tb_usuarios;
-CREATE TABLE `sis_chamados`.`tb_usuarios` ( `id_usuario` INT(2) NOT NULL , `nome_usuario` VARCHAR(40) NOT NULL , `login_usuario` VARCHAR(40) NOT NULL , `senha_usuario` VARCHAR(40) NOT NULL , `email_usuario` VARCHAR(40) NOT NULL , `dt_criacao` DATETIME NOT NULL , `status_usuario` INT(2) NOT NULL , `acesso_usuario` INT(2) NOT NULL , PRIMARY KEY (`id_usuario`)) ENGINE = MyISAM;
+CREATE TABLE tb_usuarios ( id_usuario INTEGER PRIMARY KEY , nome_usuario VARCHAR(40)  , login_usuario VARCHAR(40)  , senha_usuario VARCHAR(40)  , email_usuario VARCHAR(40)  , dt_criacao DATETIME  , status_usuario INTEGER  , acesso_usuario INTEGER );
 
 DROP TABLE IF EXISTS tb_cliente;
-CREATE TABLE `sis_chamados`.`tb_cliente` ( `id_cliente` INT NOT NULL , `nome_cliente` VARCHAR(40) NOT NULL , `endereco_id` INT NOT NULL , `rg_cliente` INT(11) NOT NULL , `cpf_cliente` INT(11) NOT NULL , `email_cliente` VARCHAR(40) NOT NULL , `telefone_cliente` INT(15) NOT NULL , `telefone2_cliente` INT(15) NOT NULL , PRIMARY KEY (`id_cliente`)) ENGINE = MyISAM;
+CREATE TABLE tb_cliente ( id_cliente INTEGER  , nome_cliente VARCHAR(40)  , endereco_id INTEGER  , rg_cliente INTEGER(11)  , cpf_cliente INTEGER(11)  , email_cliente VARCHAR(40)  , telefone_cliente INTEGER(15)  , telefone2_cliente INTEGER(15)  , PRIMARY KEY (id_cliente));
 
 DROP TABLE IF EXISTS tb_endereco;
-CREATE TABLE `sis_chamados`.`tb_endereco` ( `id_endereco` INT NOT NULL , `logradouro` VARCHAR(40) NOT NULL , `numero` INT(5) NOT NULL , `cep` VARCHAR(9) NOT NULL , `estado` VARCHAR(20) NOT NULL , `cidade` VARCHAR(40) NOT NULL , `id_cliente` INT NOT NULL , PRIMARY KEY (`id_endereco`), INDEX (`id_cliente`)) ENGINE = MyISAM;
+CREATE TABLE tb_endereco ( id_endereco INTEGER  , logradouro VARCHAR(40)  , numero INTEGER(5)  , cep VARCHAR(9)  , estado VARCHAR(20)  , cidade VARCHAR(40)  , id_cliente INTEGER  , PRIMARY KEY (id_endereco));
 
 DROP TABLE IF EXISTS tb_chamados;
-CREATE TABLE `sis_chamados`.`tb_chamados` ( `id_chamado` INT(11) NOT NULL , `id_cliente` INT(11) NOT NULL , `id_status` INT(5) NOT NULL , `descricao` TEXT NOT NULL , `dt_criacao` DATETIME NOT NULL , `tipo_servico` INT NOT NULL , `dt_entrega` DATETIME NOT NULL , PRIMARY KEY (`id_chamado`), INDEX (`id_cliente`)) ENGINE = MyISAM;
+CREATE TABLE tb_chamados ( id_chamado INTEGER PRIMARY KEY ,
+                            id_cliente INTEGER(11) ,
+                            nome VARCHAR(40),
+                            email VARCHAR(200), id_status INTEGER(5)  , descricao TEXT  , dt_criacao DATETIME  , tipo_servico INTEGER , servico varchar (200), dt_entrega DATETIME );
 
 DROP TABLE IF EXISTS tb_status;
-CREATE TABLE `sis_chamados`.`tb_status` ( `id_status` INT NOT NULL , `descricao` VARCHAR(40) NOT NULL , PRIMARY KEY (`id_status`)) ENGINE = MyISAM
+CREATE TABLE tb_status ( id_status INTEGER  , descricao VARCHAR(40)  , PRIMARY KEY (id_status));
 
 DROP TABLE IF EXISTS tb_servicos;
-CREATE TABLE `sis_chamados`.`tb_servicos` ( `id_servico` INT NOT NULL , `descricao` VARCHAR(40) NOT NULL , PRIMARY KEY (`id_servico`)) ENGINE = MyISAM;
+CREATE TABLE tb_servicos ( id_servico INTEGER  , descricao VARCHAR(40)  , PRIMARY KEY (id_servico));
