@@ -1,4 +1,9 @@
-<form class="form-horizontal">
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Cadastro de Chamados {% endblock %}</h1>
+
+<form class="form-horizontal" method="post">
 <fieldset>
 
 <!-- Form Name -->
@@ -62,3 +67,5 @@
 
 </fieldset>
 </form>
+
+{% endblock %}
