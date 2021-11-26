@@ -39,12 +39,12 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Serviço</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
+    <select id="selectbasic" name="selectbasic" class="form-control" value="{{ request.form['servico'] }}>
       <option value="0">- Selecione um item -</option>
       <option value="1">Formatação</option>
       <option value="2">Troca de Equipamentos</option>
       <option value="3">Orçamento</option>
-      value="{{ request.form['servico'] }}
+
     </select>
   </div>
 </div>

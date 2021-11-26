@@ -54,8 +54,8 @@ def create():
     if request.method == 'POST':
         nome = request.form['nome']
         descricao = request.form['descricao']
-        email = request.form['descricao']
-        servico = request.form['descricao']
+        email = request.form['email']
+        servico = request.form['email']
 
         if not nome:
             flash('O Nome é obrigatório')

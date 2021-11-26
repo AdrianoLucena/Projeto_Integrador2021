@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Bem vino ao sistema de chamados! {% endblock %}</h1><hr>
+    <h1>{% block title %} Bem vindo ao sistema de chamados! {% endblock %}</h1><hr>
     {% for post in posts %}
        <a href="{{ url_for('post', id_chamado=post['id_chamado']) }}">
            <!-- <h2>Nome: {{ post['nome'] }}</h2>
