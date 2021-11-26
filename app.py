@@ -50,3 +50,22 @@ def create():
         return redirect(url_for('index'))
 
     return render_template('cadastro_chamados.html')
+
+@app.route('<int:id>/edit', methods=('GET', 'POST'))
+def edit(id):
+    post = get_post(id)
+
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+
+    if not title:
+        flash('O titulo é obrigatório')
+    else:
+        post = Posts(title=title, content=content)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    return render_template('edit.html', post=post)
+
