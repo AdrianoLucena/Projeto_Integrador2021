@@ -3,5 +3,9 @@
 {% block content %}
     <h2>{% block title %} {{ post ['nome'] }} {% endblock %}</h2>
     <span class="badge badge-primary">{{ post['id_chamado'] }}</span>
-    <p>{{ post['descricao'] }}</p>
+
+            <p>Nome: {{ post['nome'] }}</p>
+           <p>E-mail {{ post['email'] }}</p>
+           <p>Problema: {{ post['descricao'] }}</p>
+           <p>Data postagem: {{ post['dt_criacao'] }}</p>
 {% endblock %}

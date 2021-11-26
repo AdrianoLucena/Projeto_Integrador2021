@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import abort
 from datetime import date
 
+
 project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "database.db"))
 
@@ -59,7 +60,7 @@ def create():
         if not nome:
             flash('O Nome é obrigatório')
         else:
-            post = tb_chamados(nome=nome, descricao=descricao,dt_criacao=date.today(),email=email,servico=servico)
+            post = tb_chamados(nome=nome, descricao=descricao,dt_criacao=datetime.datetime.now(),email=email,servico=servico)
             db.session.add(post)
             db.session.commit()
             return redirect(url_for('index'))
@@ -84,7 +85,7 @@ def edit(id_chamado):
             post.descricao = descricao
             post.email = email
             post.servico = servico
-            post.dt_criacao = date.today()
+            post.dt_criacao = datetime.datetime.now()
             db.session.commit()
             return redirect(url_for('index'))
 
