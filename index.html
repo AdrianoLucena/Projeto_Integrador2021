@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Bem vindo ao sistema de chamados! {% endblock %}</h1><hr>
+    {% for post in posts %}
+       <a href="{{ url_for('post', id_chamado=post['id_chamado']) }}">
+           <!-- <h2>Nome: {{ post['nome'] }}</h2>
+           <h2>E-mail {{ post['email'] }}</h2>
+           <h3>Problema: {{ post['descricao'] }}</h3>
+           <h3>Data postagem: {{ post['dt_criacao'] }}</h3>
+            -->
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12"><h4>Nome: {{ post['nome'] }}</h4></div></a>
+                    <div class="col-md-4 col-sm-12"><h4>E-mail {{ post['email'] }}</h4></div>
+                    <div class="col-md-4 col-sm-12"><h4>Problema: {{ post['descricao'] }}</h4></div>
+                    <div class="col-md-4 col-sm-12"><h4>Data postagem: {{ post['dt_criacao'] }}</h4></div>
+                </div>
+            </div>
+
+
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <a href="{{ url_for('edit', id_chamado=post['id_chamado']) }}">
+            <span class="badge badge-warning">Editar</span>Editar
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}

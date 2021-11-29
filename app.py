@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
 import os, datetime
 import sqlite3
-import mysql.connector
+##import mysql.connector
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import abort
 from datetime import date
@@ -37,17 +37,11 @@ def get_post(id_chamado):
         abort(484)
     return post
 
-## comentárop
-
 @app.route('/<int:id_chamado>')
 def post(id_chamado):
     post = get_post(id_chamado)
     return render_template('post.html', post=post)
-'''
-@app.route('/cadastro', methods=('GET', 'POST'))
-def create():
-    return render_template('cadastro.html')
-'''
+
 
 @app.route('/cadastro', methods=('GET', 'POST'))
 def create():
@@ -90,5 +84,3 @@ def edit(id_chamado):
             return redirect(url_for('index'))
 
     return render_template('edit.html', id_chamado=id_chamado)
-
-
